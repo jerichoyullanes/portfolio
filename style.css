@@ -1,0 +1,219 @@
+/* 
+Color Scheme
+- Black
+- Red
+- White
+
+*/
+
+body {
+    margin: 0;
+    background-color: hsla(0, 0%, 0%, 0.959);
+    color: white;
+}
+
+/* HEADER */
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.logo {
+    font-size: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.jyl {
+    color: white;
+}
+
+.dev {
+    color: red;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.5s ease-out;
+}
+
+nav ul li a:hover {
+    color: #ff0000;
+    text-shadow: 0 0 20px #ff0000;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+#downloadCV {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: white;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.7s ease-out;
+    box-shadow: 0 0 10px #ff0000;
+}
+#downloadCV:hover {
+    background-color: hsl(0, 100%, 60%);
+    box-shadow: 0 0 20px #ff0000;
+    transition: 0.5s;
+}
+#downloadCV:active {
+    background-color: hsl(0, 100%, 40%);
+    transition: 0.5s;
+}
+
+/* SECTIONS */
+section {
+    padding: 20px 20px 20px 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: auto;
+}
+
+/* HOME */
+.home {
+    height: 555px;
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 60px;
+    margin: 0;
+    display: inline-block;
+    margin-top: 100px;
+
+    background: linear-gradient(
+        to right,
+        #ffffff 20%,
+        #810101 30%,
+        #000203c2 70%,
+        #ff0000 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: textShine 8s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+        text-shadow: 0 0 10px #ff0000;
+    }
+}
+
+.home p {
+    margin: 0;
+    display: inline-block;
+    text-align: justify;
+    line-height: 30px;
+}
+
+.intro {
+    width: 500px;
+    max-width: 100%;
+}
+
+.home a {
+    color: #ff0000;
+}
+
+.profiles-container {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.profiles-container:hover {
+    
+}
+
+.fb:hover, .git:hover, .link:hover {
+    text-shadow: 0 0 5px #ff0000;
+}
+
+/* ABOUT */
+.about {
+    height: 650px;
+    text-align: center;
+}
+
+.about h1 {
+
+}
+
+.about p {
+    margin: 0;
+    display: inline-block;
+    text-align: justify;
+    line-height: 25px;
+    width: 500px;
+    max-width: 100%;
+}
+
+.about p span {
+    background: linear-gradient(
+        to right,
+        #ffffff 20%,
+        #810101 30%,
+        #000203c2 70%,
+        #ff0000 80%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 500% auto;
+    animation: textShine 8s ease-in-out infinite alternate;
+}
+
+/* SKILLS */
+.skills {
+    height: 650px;
+    text-align: center;
+}
+
+/* PROJECTS */
+.projects {
+    height: 650px;
+    text-align: center;
+}
+
+/* CONTACT */
+.contact {
+    height: 650px;
+    text-align: center;
+}
+
+
+/* FOOTER */
+footer {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px;
+}
