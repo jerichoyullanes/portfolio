@@ -6,6 +6,10 @@ Color Scheme
 
 */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     background-color: hsla(0, 0%, 0%, 0.959);
@@ -284,7 +288,14 @@ section {
     text-align: center;
 }
 
-input, select, textarea {
+.contact-container-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+input, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -321,23 +332,18 @@ input, select, textarea {
   }
   
   .contact-container {
+    text-align: left;
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
     width: 50%;
     height: auto;
-    margin: auto;
     background: rgba(56, 39, 39, 0.103);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.9px);
     -webkit-backdrop-filter: blur(4.9px);
     box-shadow: 0 0 5px #ff0000;
     transition: 0.5s ease-out;
-  }
-
-  .contact-container form label {
-    margin-right: 1000px;
-    font-size: 14px;
   }
 
 /* FOOTER */
@@ -347,3 +353,32 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+
+
+/* RESPONSIVENESS */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    /* body {background: red;} */
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    /* body {background: green;} */
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    /* body{background: blue;} */
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    /* body {background: orange;} */
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    /* body {background: pink;} */
+  }

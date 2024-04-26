@@ -16,10 +16,10 @@
                 <p class="logo"><span class="jyl">&lt;JYL.</span><span class="dev">dev&sol;&gt;</span></p>
                 <ul>
                     <!-- <li><a href="#">Home</a></li> -->
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Skills</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
                     <button id="downloadCV" onclick="downloadCV()" href="https://drive.google.com/uc?id=1OpIWHB-Z_6o1cvLLSW3EpW-eAgdjtSUk&export=download" download> Download CV</button>
                 </ul>
             </nav>
@@ -32,7 +32,7 @@
         <h1>Jericho Yu Llanes</h1><br>
         <p class="job-title">Aspiring Fullstack Web Developer</p><br>
         <p class="intro">
-            I specialize in front-end development, with a strong foundation in HTML, CSS, and JavaScript. 
+            I specialize in front-end development, with an average foundation in HTML, CSS, and JavaScript. 
             From sleek layouts to interactive elements, I bring ideas to life with clean, efficient code. 
             I also have proficiency in back-end development using PHP, harnessing its power to build dynamic 
             and feature-rich websites. 
@@ -46,11 +46,11 @@
     <!-- END OF HOME -->
 
     <!-- ABOUT -->
-    <section class="about">
+    <section class="about" id="about">
         <h1>About Me</h1>
         <p>Hey there! I'm <span>Jericho Yu Llanes</span>, a 4th-year Bachelor of Science in Information Technology student specializing in Web and Mobile Development at Bulacan State University Sarmiento Campus. Set to graduate on July 17, 2024, I'm geared up to embark on a tech-filled journey.
             <br><br>
-            During my college years, I've delved deep into the intricacies of Web and Mobile Development, honing skills in responsive design and app development. Complementing my studies, I earned Tesda Accredited Certificates in Web Development Level III and Creative Web Design Level III in 2021.
+            During my college years, I've delved deep into the intricacies of Web and Mobile Development, honing my skills in web design and development. Complementing my studies, I earned Tesda Accredited Certificates in Web Development Level III and Creative Web Design Level III in 2021.
             <br><br>
             My hands-on experiences include an internship at Pixel8 Web Solutions & Consultancy Inc. from February to April 2024, where I gained insights into frontend development and project management. Additionally, I've undertaken commission projects, refining both technical and interpersonal skills.
             <br><br>
@@ -60,7 +60,7 @@
     <!-- END OF ABOUT -->
 
     <!-- SKILLS -->
-    <section class="skills">
+    <section class="skills" id="skills">
         <h1>Skills</h1>
 
         <div class="skills-container">
@@ -79,7 +79,7 @@
     <!-- END OF SKILLS -->
 
     <!-- PROJECTS -->
-    <section class="projects">
+    <section class="projects" id="projects">
         <h1>Projects</h1>
 
         <div class="project-container">
@@ -117,25 +117,27 @@
     <!-- END OF PROJECTS -->
 
     <!-- CONTACT -->
-    <section class="contact">
+    <section class="contact" id="contact">
         <h1>Contact Me!</h1>
-        <div class="contact-container">
-            <form action="mailto:jericho.yu.llanes@gmail.com" method="post" enctype="text/plain">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your complete name" required>
-          
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="Enter your valid email" required>
-          
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" placeholder="Subject" required>
-          
-              <label for="subject">Subject</label>
-              <textarea id="subject" name="subject" placeholder="Your message for me..."></textarea>
-          
-              <input class="submitEmail" type="submit" value="Submit">
-            </form>
-          </div>
+        <div class="contact-container-wrapper">
+            <div class="contact-container">
+                <form action="mailto:jericho.yu.llanes@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your complete name" required>
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your valid email" required>
+            
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+            
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Your message for me..."></textarea>
+            
+                <input class="submitEmail" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
     </section>
     <!-- END OF CONTACT -->
 
