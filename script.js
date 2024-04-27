@@ -11,3 +11,7 @@ function mobileNav() {
       x.style.display = "block";
     }
 }
+
+function href(link) {
+  window.open(`${link}`, "_blank");
+}
