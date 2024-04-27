@@ -274,7 +274,7 @@ section h1 {
 }
 
 .about p span {
-    font-size: clamp(0.5rem, 2vw ,1rem);
+    font-size: clamp(0.7rem, 2vw ,1rem);
     background: linear-gradient(
         to right,
         #ffffff 20%,
