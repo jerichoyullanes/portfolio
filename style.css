@@ -221,7 +221,7 @@ section h1 {
 }
 
 .home p {
-    font-size: clamp(0.7rem, 2vw ,1rem);
+    font-size: clamp(0.75rem, 2vw ,1rem);
     margin: 0;
     display: inline-block;
     text-align: justify;
@@ -264,7 +264,7 @@ section h1 {
 }
 
 .about p {
-    font-size: clamp(0.7rem, 2vw ,1rem);
+    font-size: clamp(0.75rem, 2vw ,1rem);
     margin: 0;
     display: inline-block;
     text-align: justify;
