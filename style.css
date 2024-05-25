@@ -251,10 +251,16 @@ section h1 {
     transition: 0.9s ease-out;
 }
 
-.fb:hover, .git:hover, .link:hover {
+/* .fb:hover, .git:hover, .link:hover {
+    text-shadow: 0 0 5px #ff0000;
+    transition: 0.5s;
+} */
+
+.social-links:hover {
     text-shadow: 0 0 5px #ff0000;
     transition: 0.5s;
 }
+
 
 /* ABOUT */
 .about {
