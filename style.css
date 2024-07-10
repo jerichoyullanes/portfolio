@@ -314,7 +314,7 @@ section h1 {
 .skills-container img {
     width: clamp(30px, 5vw ,60px);
     height: clamp(30px, 5vw ,60px);
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .skill-box {
