@@ -1,227 +1,754 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This is Jericho's Fullstack Developer Portfolio">
-    <title>JYL Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="https://jerichoyullanes.github.io/portfolio/img/favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c56e0583bb.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jericho Yu Llanes - Software Engineer & Full Stack Developer building high-impact enterprise applications with React, Next.js, TypeScript, and Laravel."
+    />
+    <meta name="author" content="Jericho Yu Llanes" />
+    <meta property="og:title" content="Jericho Yu Llanes | Software Engineer" />
+    <meta
+      property="og:description"
+      content="Full Stack Developer building enterprise-grade web applications with modern technologies."
+    />
+    <meta property="og:type" content="website" />
+    <title>Jericho Yu Llanes | Software Engineer</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://jerichoyullanes.github.io/portfolio/img/favicon.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/c56e0583bb.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <script type="text/javascript">
-        (function(){
-            emailjs.init({
-                publicKey: "xaggrU_T5tFOJOIlV",
-            });
-        })();
+      (function () {
+        emailjs.init({ publicKey: "xaggrU_T5tFOJOIlV" });
+      })();
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
+  </head>
+  <body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Skip to Content -->
+    <a href="#hero" class="skip-link">Skip to content</a>
+
     <!-- HEADER -->
-    <header id="header" data-aos="fade-down" data-aos-duration="1200">
-        <div class="container">
-            <nav>
-                <p class="logo"><span class="jyl">&lt;JYL.</span><span class="dev">dev&sol;&gt;</span></p>
-                <div class="burger-menu">
-                    <div onclick="mobileNav()">
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
-                </div>
-                <ul>
-                    <!-- <li><a href="#">Home</a></li> -->
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <!-- <li><a href="#certificates">Certificates</a></li> -->
-                    <li><a href="#contact">Contact</a></li>
-                    <button id="downloadCV" onclick="downloadResume()" href="https://drive.google.com/uc?id=1OpIWHB-Z_6o1cvLLSW3EpW-eAgdjtSUk&export=download" download> Download Resume</button>
-                </ul>
-            </nav>
+    <header id="header">
+      <nav class="nav-container">
+        <a href="#" class="logo">
+          <span class="logo-bracket">&lt;</span>JYL<span class="logo-dot"
+            >.</span
+          ><span class="logo-bracket">/&gt;</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+          <a href="#about" class="nav-link" data-section="about">
+            <span class="nav-number">01.</span> About
+          </a>
+          <a href="#experience" class="nav-link" data-section="experience">
+            <span class="nav-number">02.</span> Experience
+          </a>
+          <a href="#skills" class="nav-link" data-section="skills">
+            <span class="nav-number">03.</span> Tech Stack
+          </a>
+          <a href="#projects" class="nav-link" data-section="projects">
+            <span class="nav-number">04.</span> Projects
+          </a>
+          <a href="#education" class="nav-link" data-section="education">
+            <span class="nav-number">05.</span> Education
+          </a>
+          <a href="#contact" class="nav-link" data-section="contact">
+            <span class="nav-number">06.</span> Contact
+          </a>
         </div>
+        <div class="nav-actions">
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+          >
+            <i class="fa-solid fa-moon" id="themeIcon"></i>
+          </button>
+          <a
+            href="https://drive.google.com/uc?id=1OpIWHB-Z_6o1cvLLSW3EpW-eAgdjtSUk&export=download"
+            class="btn btn-outline btn-sm"
+            download
+          >
+            Resume <i class="fa-solid fa-arrow-down"></i>
+          </a>
+          <button
+            class="mobile-toggle"
+            id="mobileToggle"
+            aria-label="Toggle menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
     </header>
 
-    <!-- Mobile Nav -->
-    <div class="mobile-nav" id="mobile-nav">
-        <div class="mobile-nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <!-- <a href="#certificates">Certificates</a> -->
-            <a href="#contact">Contact</a>
-            <button id="downloadCV" onclick="downloadResume()" href="https://drive.google.com/uc?id=1OpIWHB-Z_6o1cvLLSW3EpW-eAgdjtSUk&export=download" download> Download Resume</button>
-        </div>
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobileNav">
+      <div class="mobile-nav-inner">
+        <a href="#about" class="mobile-link">
+          <span class="nav-number">01.</span> About
+        </a>
+        <a href="#experience" class="mobile-link">
+          <span class="nav-number">02.</span> Experience
+        </a>
+        <a href="#skills" class="mobile-link">
+          <span class="nav-number">03.</span> Tech Stack
+        </a>
+        <a href="#projects" class="mobile-link">
+          <span class="nav-number">04.</span> Projects
+        </a>
+        <a href="#education" class="mobile-link">
+          <span class="nav-number">05.</span> Education
+        </a>
+        <a href="#contact" class="mobile-link">
+          <span class="nav-number">06.</span> Contact
+        </a>
+        <a
+          href="https://drive.google.com/uc?id=1OpIWHB-Z_6o1cvLLSW3EpW-eAgdjtSUk&export=download"
+          class="btn btn-primary btn-full"
+          download
+        >
+          Download Resume
+        </a>
+      </div>
     </div>
 
-    <!-- END OF HEADER -->
-
-    <!-- HOME -->
-    <section class="home">
-        
-        <h1 data-aos="zoom-in" data-aos-duration="800">Jericho Yu Llanes</h1><br>
-        <p class="job-title" data-aos="fade-left" data-aos-duration="1200">Full-Stack Web Developer</p><br>
-        <p class="intro" data-aos="fade-right" data-aos-duration="1200">
-            I specialized in front-end development, with a strong foundation in HTML, CSS, and JavaScript. 
-            I had average skills to develop frontend code using Vue.js and Quasar Framework. I bring 
-            ideas to life with clean, efficient code. I also have proficiency in back-end development using 
-            PHP, harnessing its power to build dynamic and feature-rich websites.
-        </p> <br>
-        <div class="profiles-container" data-aos="fade-up" data-aos-duration="1200">
-            <a class="social-links" href="https://www.linkedin.com/in/jerichoyullanes/" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-linkedin fa-xl"></i></a>
-            <a class="social-links" href="https://github.com/jerichoyullanes" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-github fa-xl"></i></a>
-            <a class="social-links" href="https://www.facebook.com/jerichoyullanes/" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-facebook fa-xl"></i></a>
-            <!-- <a class="social-links" href="https://m.me/jerichoyullanes" target="_blank" rel="noreferrer noopener"><i class="fab fa-facebook-messenger fa-xl"></i></i></a> -->
-            <!-- <a class="social-links" href="https://join.skype.com/invite/uij881h0sOue" target="_blank" rel="noreferrer noopener"><i class="fa-brands fa-skype fa-xl"></i></a> -->
+    <!-- HERO -->
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <div class="hero-intro reveal">
+          <span class="mono hero-greeting">// hello world</span>
         </div>
+        <h1 class="hero-name reveal reveal-delay-1">
+          Jericho Yu<br />Llanes<span class="accent-dot">.</span>
+        </h1>
+        <h2 class="hero-title reveal reveal-delay-2">
+          Software Engineer &amp; Full Stack Developer
+        </h2>
+        <p class="hero-description reveal reveal-delay-3">
+          I engineer robust, enterprise-grade web applications, from
+          pixel-perfect interfaces to battle-tested backends. Currently building
+          internal systems at
+          <span class="highlight">SparkSoft Solutions</span>.
+        </p>
+        <div class="hero-status reveal reveal-delay-3">
+          <span class="status-dot"></span>
+          <span class="mono">Available for opportunities</span>
+        </div>
+        <div class="hero-cta reveal reveal-delay-4">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+        <div class="hero-social reveal reveal-delay-4">
+          <a
+            href="https://www.linkedin.com/in/jerichoyullanes/"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="LinkedIn"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/jerichoyullanes"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://www.facebook.com/jerichoyullanes/"
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Facebook"
+          >
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-decoration reveal reveal-delay-2">
+        <div class="code-block">
+          <div class="code-header">
+            <span class="code-dot" style="background: #ff5f57"></span>
+            <span class="code-dot" style="background: #febc2e"></span>
+            <span class="code-dot" style="background: #28c840"></span>
+            <span class="code-filename mono">jericho.config.ts</span>
+          </div>
+          <pre
+            class="code-content"
+          ><code><span class="code-keyword">const</span> <span class="code-var">engineer</span> = {
+  <span class="code-key">name</span>: <span class="code-string">"Jericho Yu Llanes"</span>,
+  <span class="code-key">role</span>: <span class="code-string">"Full Stack Developer"</span>,
+  <span class="code-key">stack</span>: [
+    <span class="code-string">"React"</span>, <span class="code-string">"Next.js"</span>,
+    <span class="code-string">"TypeScript"</span>, <span class="code-string">"Laravel"</span>
+  ],
+  <span class="code-key">focus</span>: <span class="code-string">"Enterprise Apps"</span>,
+  <span class="code-key">available</span>: <span class="code-bool">true</span>,
+};</code></pre>
+        </div>
+      </div>
     </section>
-    <!-- END OF HOME -->
 
     <!-- ABOUT -->
-    <section class="about" id="about">
-        <h1 data-aos="zoom-in" data-aos-duration="800">About Me</h1>
-        <p data-aos="fade-up" data-aos-duration="1200">
-            Hello! I'm <span>Jericho Yu Llanes</span>, a Bachelor of Science in Information Technology fresh graduate specializing in Web and Mobile Development from Bulacan State University Sarmiento Campus. I graduated on July 12, 2024, and I'm geared up to embark on a tech-filled journey.
-        </p> <br><br>
-        <p data-aos="fade-up" data-aos-duration="1200">
-            During my college years, I delved deep into the intricacies of Web and Mobile Development, honing my skills in web design and development. Complementing my studies, I earned Tesda Accredited Certificates in Web Development Level III and Creative Web Design Level III in 2021.
-        </p> <br><br>
-        <p data-aos="fade-up" data-aos-duration="1200">
-            My hands-on experiences include an internship at Pixel8 Web Solutions & Consultancy Inc. from February to April 2024, where I gained insights into frontend development and project management. Additionally, I've undertaken commission projects, refining both technical and interpersonal skills.
-        </p> <br><br>
-        <p data-aos="fade-up" data-aos-duration="1200">
-            With a blend of academic prowess, specialized training, and practical experience, I'm poised to contribute to the tech industry's evolution. Ready to tackle challenges head-on, I'm eager to innovate, create, and inspire!
-        </p>
-    </section>
-    <!-- END OF ABOUT -->
-
-    <!-- SKILLS -->
-    <section class="skills" id="skills" data-aos="fade-in">
-        <h1 data-aos="zoom-in" data-aos-duration="800">Skills</h1>
-
-        <div class="skills-container">
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://img.icons8.com/fluency/60/html-5.png" alt="HTML 5 Icon"><p>HTML</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://img.icons8.com/?size=60&id=21278&format=png" alt="CSS 3 Icon"><p>CSS</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://img.icons8.com/color/60/javascript--v1.png" alt="JavaScript Icon"><p>JavaScript</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://static.cdnlogo.com/logos/t/96/typescript.svg" alt="TypeScript Icon"><p>TypeScript</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://www.php.net//images/logos/new-php-logo.svg" alt="PHP Icon">&nbsp;<p>PHP</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://img.icons8.com/fluency/60/mysql-logo.png" alt="MySQL Icon">&nbsp;<p>MySQL</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://img.icons8.com/fluency/48/tailwind_css.png" alt="Tailwind CSS Icon" width="10">&nbsp;<p>Tailwind CSS</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://img.icons8.com/?size=60&id=dzfo6UeXW9h7&format=png" alt="Vue JS Icon">&nbsp;<p>Vue.js</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://jerichoyullanes.github.io/portfolio/img/quasar.png" alt="Quasar Icon" width="60">&nbsp;<p>Quasar</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://jerichoyullanes.github.io/portfolio/img/react.png" alt="React JS Icon" width="60">&nbsp;<p>React.js</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://jerichoyullanes.github.io/portfolio/img/nextjs.png" alt="Next JS Icon" width="60">&nbsp;<p>Next.js</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://jerichoyullanes.github.io/portfolio/img/git.png" alt="Git Icon">&nbsp;<p>Git</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/expressjs_logo_icon_169185.png" alt="Express JS Icon" style="background-color: white; border-radius: 5px;">&nbsp;<p>Express.js</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://icon.icepanel.io/Technology/svg/Node.js.svg" alt="Node JS Icon">&nbsp;<p>Node.js</p></div>
-            <div class="skill-box" data-aos="fade-up" data-aos-duration="1200"><img src="https://jerichoyullanes.github.io/portfolio/img/laravel.png" alt="Laravel Icon" width="60">&nbsp;<p>Laravel</p></div>
+    <section id="about" class="section">
+      <div class="section-container">
+        <div class="section-header reveal">
+          <span class="section-number mono">01</span>
+          <h2>About Me</h2>
+          <div class="section-line"></div>
         </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p class="reveal">
+              I'm a Software Engineer who enjoys building things that actually
+              work well and look good doing it. I graduated with a BS in
+              Information Technology, specializing in Web and Mobile
+              Development, from Bulacan State University. Since then, I've been
+              focused on writing clean code, learning scalable patterns, and
+              growing as a developer every day.
+            </p>
+            <p class="reveal">
+              Right now at <span class="highlight">SparkSoft Solutions</span>, I
+              work on data-intensive enterprise applications. I build things
+              like audit logging systems, notification frameworks, and complex
+              dashboards using React, Next.js, TypeScript, and Laravel. I care a
+              lot about writing code that's not just functional but also easy to
+              maintain and fast at scale.
+            </p>
+            <p class="reveal">
+              Long term, I want to become a really strong full stack engineer
+              and eventually build SaaS products that solve real problems. I'm
+              always learning, always shipping, and always looking for the next
+              thing to figure out.
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat-card reveal">
+              <span class="stat-number">1+</span>
+              <span class="stat-label">Year Professional<br />Experience</span>
+            </div>
+            <div class="stat-card reveal">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Technologies<br />In My Arsenal</span>
+            </div>
+            <div class="stat-card reveal">
+              <span class="stat-number">3+</span>
+              <span class="stat-label">Projects<br />Delivered</span>
+            </div>
+            <div class="stat-card reveal">
+              <span class="stat-number">6</span>
+              <span class="stat-label">Certifications<br />Earned</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- END OF SKILLS -->
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="section-container">
+        <div class="section-header reveal">
+          <span class="section-number mono">02</span>
+          <h2>Experience</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="experience-timeline">
+          <div class="experience-card reveal">
+            <div class="exp-header">
+              <div>
+                <h3>Junior Software Engineer</h3>
+                <p class="exp-company">SparkSoft Solutions, Inc.</p>
+              </div>
+              <span class="exp-date mono">2024 - Present</span>
+            </div>
+            <ul class="exp-list">
+              <li>
+                Develop and maintain enterprise-grade internal systems using
+                React.js, Next.js, and TypeScript
+              </li>
+              <li>
+                Build complex data tables and dashboards with AG-Grid, Shadcn
+                UI, and Radix UI components
+              </li>
+              <li>
+                Engineer backend services and APIs with PHP and Laravel,
+                including audit logging with Laravel-Auditing
+              </li>
+              <li>
+                Implement notification systems and data-heavy features for
+                enterprise applications
+              </li>
+              <li>
+                Collaborate with cross-functional teams to deliver scalable,
+                maintainable solutions
+              </li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag">React.js</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">TailwindCSS</span>
+              <span class="tag">Laravel</span>
+              <span class="tag">PHP</span>
+              <span class="tag">AG-Grid</span>
+            </div>
+          </div>
+          <div class="experience-card reveal">
+            <div class="exp-header">
+              <div>
+                <h3>Frontend Development Intern</h3>
+                <p class="exp-company">
+                  Pixel8 Web Solutions &amp; Consultancy Inc.
+                </p>
+              </div>
+              <span class="exp-date mono">Feb - Apr 2024</span>
+            </div>
+            <ul class="exp-list">
+              <li>
+                Gained hands-on experience in frontend development and modern
+                web technologies
+              </li>
+              <li>
+                Contributed to client projects under professional mentorship and
+                agile workflows
+              </li>
+              <li>
+                Developed understanding of project management practices and team
+                collaboration
+              </li>
+            </ul>
+            <div class="exp-tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Vue.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="skills" class="section">
+      <div class="section-container">
+        <div class="section-header reveal">
+          <span class="section-number mono">03</span>
+          <h2>Tech Stack</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category reveal">
+            <h3 class="category-title">
+              <i class="fa-solid fa-display"></i> Frontend
+            </h3>
+            <div class="skill-tags">
+              <span class="skill-tag">React.js</span>
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">TailwindCSS</span>
+              <span class="skill-tag">Shadcn UI</span>
+              <span class="skill-tag">Radix UI</span>
+              <span class="skill-tag">Vue.js</span>
+              <span class="skill-tag">Quasar</span>
+              <span class="skill-tag">HTML</span>
+              <span class="skill-tag">CSS</span>
+            </div>
+          </div>
+          <div class="skill-category reveal">
+            <h3 class="category-title">
+              <i class="fa-solid fa-server"></i> Backend
+            </h3>
+            <div class="skill-tags">
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">Laravel</span>
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Express.js</span>
+              <span class="skill-tag">MySQL</span>
+              <span class="skill-tag">REST APIs</span>
+            </div>
+          </div>
+          <div class="skill-category reveal">
+            <h3 class="category-title">
+              <i class="fa-solid fa-screwdriver-wrench"></i> Tools &amp;
+              Libraries
+            </h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Git &amp; GitHub</span>
+              <span class="skill-tag">AG-Grid</span>
+              <span class="skill-tag">Radix UI</span>
+              <span class="skill-tag">Laravel Auditing</span>
+              <span class="skill-tag">Quasar Framework</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- PROJECTS -->
-    <section class="projects" id="projects">
-        <h1 data-aos="zoom-in" data-aos-duration="800">Projects</h1>
-
-        <div class="project-container">
-
-            <div class="project-box" onclick="href('https://lampstoresystemlccproject.000webhostapp.com/')" data-aos="fade-up" data-aos-duration="1200">
-                <img src="https://jerichoyullanes.github.io/portfolio/img/project3.jpg" alt="">
-                <div class="project-details">
-                    <p>ECK Lampshade Ecommerce Website</p>
-                    <!-- <span style="background-color: #6b6faa;">PHP</span>
-                    <span style="background-color: #0a008f" >MySQL</span> -->
-                </div>
-            </div>
-
-
-            <div class="project-box" onclick="href('https://jerichoyullanes.github.io/portfolio/img/project2.jpg')" data-aos="fade-up" data-aos-duration="1200">
-                <img src="https://jerichoyullanes.github.io/portfolio/img/project2.jpg" alt="">
-                <div class="project-details">
-                    <p>Big Brew Palmera Branch Online Ordering System</p>
-                    <!-- <span style="background-color: #6b6faa;">PHP</span>
-                    <span style="background-color: #0a008f" >MySQL</span> -->
-                </div>
-            </div>
-
-            <div class="project-box" onclick="href('https://jerichoyullanes.github.io/portfolio/img/project1.jpg')" data-aos="fade-up" data-aos-duration="1200">
-                <img src="https://jerichoyullanes.github.io/portfolio/img/project1.jpg" alt="">
-                <div class="project-details">
-                    <p>One Opti Inventory Management System</p>
-                    <!-- <span style="background-color: #6b6faa;">PHP</span>
-                    <span style="background-color: #0a008f" >MySQL</span> -->
-                </div>
-            </div>
-
+    <section id="projects" class="section">
+      <div class="section-container">
+        <div class="section-header reveal">
+          <span class="section-number mono">04</span>
+          <h2>Featured Projects</h2>
+          <div class="section-line"></div>
         </div>
+        <div class="projects-grid">
+          <div class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://jerichoyullanes.github.io/portfolio/img/project3.jpg"
+                alt="ECK Lampshade E-Commerce Website"
+                loading="lazy"
+              />
+              <div class="project-overlay">
+                <a
+                  href="https://lampstoresystemlccproject.000webhostapp.com/"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="project-link-icon"
+                  aria-label="View live site"
+                >
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-info">
+              <span class="project-label mono">Commission Project</span>
+              <h3>ECK Lampshade E-Commerce</h3>
+              <div class="project-description">
+                <p>
+                  My second commission project, developed in August 2023 for
+                  BSIS students at La Concepcion College. It's an e-commerce
+                  website for ECK Lampshade that lets customers browse products,
+                  add items to their cart, and place orders. The admin side
+                  includes product management and order tracking. It was a great
+                  experience working with a different set of clients and
+                  refining how I scope and deliver web projects.
+                </p>
+              </div>
+              <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reverse reveal">
+            <div class="project-image">
+              <img
+                src="https://jerichoyullanes.github.io/portfolio/img/project2.jpg"
+                alt="Big Brew Online Ordering System"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-info">
+              <span class="project-label mono">Commission Project</span>
+              <h3>Big Brew Online Ordering System</h3>
+              <div class="project-description">
+                <p>
+                  My first ever commission project, for BSIS students at La
+                  Concepcion College. This was an online ordering system built
+                  for the Big Brew Palmera branch. Customers could browse the
+                  menu, place orders online, and the branch staff could manage
+                  incoming orders from an admin panel. It was my first time
+                  building something for an actual client, and it taught me a
+                  lot about working with real requirements and delivering a
+                  finished product.
+                </p>
+              </div>
+              <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card reveal">
+            <div class="project-image">
+              <img
+                src="https://jerichoyullanes.github.io/portfolio/img/project1.jpg"
+                alt="One Opti Inventory Management System"
+                loading="lazy"
+              />
+            </div>
+            <div class="project-info">
+              <span class="project-label mono">College Project</span>
+              <h3>One Opti Inventory Management System</h3>
+              <div class="project-description">
+                <p>
+                  This was my very first website, built back in December 2022.
+                  It was my final project for two subjects, "IT 304 Web Systems
+                  and Technologies 1" and "IT 303 System Analysis and Design,"
+                  during my 3rd year, 2nd semester in college. The system helps
+                  an optical shop manage their product inventory, track stock
+                  levels, and generate basic reports. It was a huge learning
+                  experience and really solidified my understanding of how full
+                  stack web applications come together.
+                </p>
+              </div>
+              <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- END OF PROJECTS -->
 
-    <!-- CERTIFICATES -->
-    <!-- <section class="certificates">
-        <h1>Certificates</h1>
-
-        <div class="certificates-container">
-
-            <div class="certificate">
-                Certificate 1
-                <img src="" alt="">
-            </div>
-
-            <div class="certificate">
-                Certificate 2
-                <img src="" alt="">
-            </div>
-
-            <div class="certificate">
-                Certificate 3
-                <img src="" alt="">
-            </div>
-
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="section-container">
+        <div class="section-header reveal">
+          <span class="section-number mono">05</span>
+          <h2>Education &amp; Certifications</h2>
+          <div class="section-line"></div>
         </div>
-
-        <p></p>
-    </section> -->
-    <!-- END OF CERTIFICATES -->
+        <div class="cert-grid">
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>BS Information Technology</h3>
+              <p class="cert-issuer">
+                Specialization in Web &amp; Mobile Development
+              </p>
+              <p class="cert-issuer">
+                Bulacan State University, Sarmiento Campus
+              </p>
+              <span class="cert-year mono">Graduated July 12, 2024</span>
+            </div>
+          </div>
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Frontend Development Certificate of Training</h3>
+              <p class="cert-issuer">
+                Pixel8 Web Solutions &amp; Consultancy Inc.
+              </p>
+              <span class="cert-year mono">05/14/2024</span>
+            </div>
+          </div>
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Frontend Development Competency Certificate</h3>
+              <p class="cert-issuer">
+                Pixel8 Web Solutions &amp; Consultancy Inc.
+              </p>
+              <span class="cert-year mono">04/30/2024</span>
+            </div>
+          </div>
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Web Development Level III</h3>
+              <p class="cert-issuer">
+                American TESOL Institute Philippines (TESDA Accredited)
+              </p>
+              <span class="cert-year mono">10/15/2021</span>
+            </div>
+          </div>
+          <div class="cert-card reveal">
+            <div class="cert-icon">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Creative Web Design Level III</h3>
+              <p class="cert-issuer">
+                88 North East Venture Corp. (TESDA Accredited)
+              </p>
+              <span class="cert-year mono">09/23/2021</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- CONTACT -->
-    <section class="contact" id="contact">
-        <h1 data-aos="zoom-in" data-aos-duration="800">Contact Me!</h1>
-        <div class="contact-container-wrapper" data-aos="fade-up" data-aos-duration="1200">
-            <div class="contact-container">
-              
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your complete name" required>
-            
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your valid email" required>
-            
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="Subject" required>
-            
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Your message for me..."></textarea>
-            
-                <input class="submitEmail" type="submit" value="Submit" onclick="sendEmail()"></input>
-               
-            </div>
+    <section id="contact" class="section">
+      <div class="section-container">
+        <div class="section-header reveal">
+          <span class="section-number mono">06</span>
+          <h2>Get In Touch</h2>
+          <div class="section-line"></div>
         </div>
+        <div class="contact-content">
+          <div class="contact-text reveal">
+            <p class="contact-headline">
+              Let's build something remarkable together.
+            </p>
+            <p>
+              Whether you have a project in mind, a job opportunity, or just
+              want to connect, I'm always open to discussing new challenges and
+              ideas. Drop me a message and I'll get back to you as soon as
+              possible.
+            </p>
+            <div class="contact-links">
+              <a
+                href="https://www.linkedin.com/in/jerichoyullanes/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+              </a>
+              <a
+                href="https://github.com/jerichoyullanes"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+              <a
+                href="https://www.facebook.com/jerichoyullanes/"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <i class="fa-brands fa-facebook"></i> Facebook
+              </a>
+            </div>
+          </div>
+          <div class="contact-form-wrapper reveal">
+            <form id="contactForm" onsubmit="return handleSubmit(event);">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your full name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="What's this about?"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your project or opportunity..."
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary btn-full"
+                id="submitBtn"
+              >
+                <span class="btn-text">Send Message</span>
+                <span class="btn-loading" style="display: none">
+                  <i class="fa-solid fa-spinner fa-spin"></i> Sending...
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
-    <!-- END OF CONTACT -->
 
     <!-- FOOTER -->
     <footer>
-        © Copyright 2024 | Jericho Yu Llanes | All rights reserved.
+      <div class="footer-container">
+        <div class="footer-top">
+          <a href="#" class="footer-logo">
+            <span class="logo-bracket">&lt;</span>JYL<span class="logo-dot"
+              >.</span
+            ><span class="logo-bracket">/&gt;</span>
+          </a>
+          <div class="footer-social">
+            <a
+              href="https://www.linkedin.com/in/jerichoyullanes/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a
+              href="https://github.com/jerichoyullanes"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="GitHub"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a
+              href="https://www.facebook.com/jerichoyullanes/"
+              target="_blank"
+              rel="noreferrer noopener"
+              aria-label="Facebook"
+            >
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="mono">
+            Designed &amp; Built by Jericho Yu Llanes &copy;
+            <span id="currentYear"></span>
+          </p>
+        </div>
+      </div>
     </footer>
-    <!-- END OF FOOTER -->
 
     <script src="script.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-</body>
+  </body>
 </html>
