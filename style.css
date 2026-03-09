@@ -512,6 +512,31 @@ header.scrolled {
   color: var(--accent);
 }
 
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 10px;
+  color: var(--accent);
+  vertical-align: middle;
+  position: relative;
+  top: 0;
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.35));
+  transition:
+    filter var(--transition),
+    transform var(--transition);
+}
+
+.verified-badge svg {
+  width: clamp(1rem, 2vw, 1.6rem);
+  height: clamp(1rem, 2vw, 1.6rem);
+  display: block;
+}
+
+.verified-badge:hover {
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.7));
+  transform: scale(1.1);
+}
+
 .hero-title {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: 500;
