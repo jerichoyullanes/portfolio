@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* ============================================
    CONTACT FORM (EmailJS)
    ============================================ */
-var serviceID = "service_m64jjhl";
+var serviceID = "service_cao3jf4";
 var templateID = "template_pap5qf1";
 
 function handleSubmit(event) {
@@ -192,7 +192,8 @@ function handleSubmit(event) {
         "success",
       );
     })
-    .catch(function () {
+    .catch(function (err) {
+      console.error("EmailJS error:", err);
       showToast("Something went wrong. Please try again later.", "error");
     })
     .finally(function () {
