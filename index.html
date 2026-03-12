@@ -587,19 +587,14 @@
               <span class="cert-year mono">Graduated July 12, 2024</span>
             </div>
           </div>
-          <div class="cert-card reveal">
-            <div class="cert-icon">
-              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
-            </div>
-            <div class="cert-info">
-              <h3>Frontend Development Certificate of Training</h3>
-              <p class="cert-issuer">
-                Pixel8 Web Solutions &amp; Consultancy Inc.
-              </p>
-              <span class="cert-year mono">05/14/2024</span>
-            </div>
-          </div>
-          <div class="cert-card reveal">
+          <div
+            class="cert-card cert-card--clickable reveal"
+            role="button"
+            tabindex="0"
+            aria-label="View Frontend Development Competency Certificate"
+            data-cert-img="img/certificates/FRONTEND COMPETENCY CERTIFICATE_page-0001.jpg"
+            data-cert-title="Frontend Development Competency Certificate"
+          >
             <div class="cert-icon">
               <i class="fa-solid fa-certificate" aria-hidden="true"></i>
             </div>
@@ -610,8 +605,80 @@
               </p>
               <span class="cert-year mono">04/30/2024</span>
             </div>
+            <div class="cert-view-hint" aria-hidden="true">
+              <i class="fa-solid fa-eye"></i>
+            </div>
           </div>
-          <div class="cert-card reveal">
+          <div
+            class="cert-card cert-card--clickable reveal"
+            role="button"
+            tabindex="0"
+            aria-label="View Frontend Development Certificate of Training"
+            data-cert-img="img/certificates/CERTIFICATE OF FRONTEND TRAINING_page-0001.jpg"
+            data-cert-title="Frontend Development Certificate of Training"
+          >
+            <div class="cert-icon">
+              <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Frontend Development Certificate of Training</h3>
+              <p class="cert-issuer">
+                Pixel8 Web Solutions &amp; Consultancy Inc.
+              </p>
+              <span class="cert-year mono">05/14/2024</span>
+            </div>
+            <div class="cert-view-hint" aria-hidden="true">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+          </div>
+          <div
+            class="cert-card cert-card--clickable reveal"
+            role="button"
+            tabindex="0"
+            aria-label="View Next.js Web Dev Certificate"
+            data-cert-img="img/certificates/Nextjs Certificate_page-0001.jpg"
+            data-cert-title="Next.js Web Dev: Master this Powerful React Framework"
+          >
+            <div class="cert-icon">
+              <i class="fa-brands fa-react" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>Next.js Web Dev: Master this Powerful React Framework</h3>
+              <p class="cert-issuer">Udemy &mdash; Meta Brains</p>
+              <span class="cert-year mono">07/08/2024</span>
+            </div>
+            <div class="cert-view-hint" aria-hidden="true">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+          </div>
+          <div
+            class="cert-card cert-card--clickable reveal"
+            role="button"
+            tabindex="0"
+            aria-label="View React JS Tutorial Certificate"
+            data-cert-img="img/certificates/React JS Certificate_pages-to-jpg-0001.jpg"
+            data-cert-title="React JS Tutorial"
+          >
+            <div class="cert-icon">
+              <i class="fa-brands fa-react" aria-hidden="true"></i>
+            </div>
+            <div class="cert-info">
+              <h3>React JS Tutorial</h3>
+              <p class="cert-issuer">Great Learning Academy</p>
+              <span class="cert-year mono">06/2024</span>
+            </div>
+            <div class="cert-view-hint" aria-hidden="true">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+          </div>
+          <div
+            class="cert-card cert-card--clickable reveal"
+            role="button"
+            tabindex="0"
+            aria-label="View Web Development Level III Certificate"
+            data-cert-img="img/certificates/Web Development Level III_page-0001.jpg"
+            data-cert-title="Web Development Level III"
+          >
             <div class="cert-icon">
               <i class="fa-solid fa-certificate" aria-hidden="true"></i>
             </div>
@@ -622,8 +689,18 @@
               </p>
               <span class="cert-year mono">10/15/2021</span>
             </div>
+            <div class="cert-view-hint" aria-hidden="true">
+              <i class="fa-solid fa-eye"></i>
+            </div>
           </div>
-          <div class="cert-card reveal">
+          <div
+            class="cert-card cert-card--clickable reveal"
+            role="button"
+            tabindex="0"
+            aria-label="View Creative Web Design Level III Certificate"
+            data-cert-img="img/certificates/Creative Web Design Level III_page-0001.jpg"
+            data-cert-title="Creative Web Design Level III"
+          >
             <div class="cert-icon">
               <i class="fa-solid fa-certificate" aria-hidden="true"></i>
             </div>
@@ -633,6 +710,9 @@
                 88 North East Venture Corp. (TESDA Accredited)
               </p>
               <span class="cert-year mono">09/23/2021</span>
+            </div>
+            <div class="cert-view-hint" aria-hidden="true">
+              <i class="fa-solid fa-eye"></i>
             </div>
           </div>
         </div>
@@ -784,6 +864,68 @@
         </div>
       </div>
     </footer>
+
+    <!-- CERTIFICATE MODAL -->
+    <div
+      class="cert-modal"
+      id="certModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="certModalTitle"
+      aria-hidden="true"
+    >
+      <div class="cert-modal__backdrop" id="certModalBackdrop"></div>
+      <div class="cert-modal__container">
+        <div class="cert-modal__header">
+          <h3 class="cert-modal__title" id="certModalTitle"></h3>
+          <div class="cert-modal__actions">
+            <button
+              class="cert-modal__zoom-btn"
+              id="certZoomOut"
+              aria-label="Zoom out"
+            >
+              <i class="fa-solid fa-magnifying-glass-minus"></i>
+            </button>
+            <span class="cert-modal__zoom-level mono" id="certZoomLevel"
+              >100%</span
+            >
+            <button
+              class="cert-modal__zoom-btn"
+              id="certZoomIn"
+              aria-label="Zoom in"
+            >
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </button>
+            <button
+              class="cert-modal__zoom-btn"
+              id="certZoomReset"
+              aria-label="Reset zoom"
+              title="Reset"
+            >
+              <i class="fa-solid fa-arrow-rotate-left"></i>
+            </button>
+            <button
+              class="cert-modal__close"
+              id="certModalClose"
+              aria-label="Close certificate"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+        <div class="cert-modal__body" id="certModalBody">
+          <div class="cert-modal__img-wrap" id="certImgWrap">
+            <img
+              class="cert-modal__img"
+              id="certModalImg"
+              src=""
+              alt=""
+              draggable="false"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

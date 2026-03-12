@@ -252,3 +252,204 @@ document.addEventListener("DOMContentLoaded", function () {
   var yearEl = document.getElementById("currentYear");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
+
+/* ============================================
+   CERTIFICATE MODAL
+   ============================================ */
+(function () {
+  var modal = document.getElementById("certModal");
+  var backdrop = document.getElementById("certModalBackdrop");
+  var closeBtn = document.getElementById("certModalClose");
+  var modalImg = document.getElementById("certModalImg");
+  var modalTitle = document.getElementById("certModalTitle");
+  var modalBody = document.getElementById("certModalBody");
+  var imgWrap = document.getElementById("certImgWrap");
+  var zoomInBtn = document.getElementById("certZoomIn");
+  var zoomOutBtn = document.getElementById("certZoomOut");
+  var zoomResetBtn = document.getElementById("certZoomReset");
+  var zoomLabel = document.getElementById("certZoomLevel");
+
+  var ZOOM_STEP = 0.25;
+  var ZOOM_MIN = 0.5;
+  var ZOOM_MAX = 3;
+  var scale = 1;
+  var baseWidth = 0;
+  var baseHeight = 0;
+
+  /* Compute the 100%-zoom pixel dimensions that fit the container */
+  function computeBase() {
+    var availW = modalBody.clientWidth;
+    var availH = modalBody.clientHeight;
+    var natW = modalImg.naturalWidth || 800;
+    var natH = modalImg.naturalHeight || 600;
+    var fit = Math.min(
+      availW / natW,
+      availH / natH,
+      1,
+    ); /* never upscale past natural */
+    baseWidth = Math.round(natW * fit);
+    baseHeight = Math.round(natH * fit);
+  }
+
+  /*
+   * Layout strategy (no flexbox centering — that breaks overflow scrolling):
+   * - imgWrap is a plain block sized to max(container, image)
+   * - image is centered inside imgWrap via equal padding
+   * - when image > container: padding = 0, block overflow scrolls in ALL directions
+   */
+  function applyZoom() {
+    if (!baseWidth || !baseHeight) return;
+
+    var imgW = Math.round(baseWidth * scale);
+    var imgH = Math.round(baseHeight * scale);
+    var availW = modalBody.clientWidth;
+    var availH = modalBody.clientHeight;
+
+    var wrapW = Math.max(availW, imgW);
+    var wrapH = Math.max(availH, imgH);
+    var padX = Math.floor((wrapW - imgW) / 2);
+    var padY = Math.floor((wrapH - imgH) / 2);
+
+    imgWrap.style.width = wrapW + "px";
+    imgWrap.style.height = wrapH + "px";
+    imgWrap.style.padding = padY + "px " + padX + "px";
+
+    modalImg.style.width = imgW + "px";
+    modalImg.style.height = imgH + "px";
+
+    zoomLabel.textContent = Math.round(scale * 100) + "%";
+    zoomInBtn.disabled = scale >= ZOOM_MAX;
+    zoomOutBtn.disabled = scale <= ZOOM_MIN;
+  }
+
+  function zoomIn() {
+    scale = Math.min(ZOOM_MAX, +(scale + ZOOM_STEP).toFixed(2));
+    applyZoom();
+  }
+  function zoomOut() {
+    scale = Math.max(ZOOM_MIN, +(scale - ZOOM_STEP).toFixed(2));
+    applyZoom();
+  }
+  function resetZoom() {
+    scale = 1;
+    applyZoom();
+    modalBody.scrollLeft = 0;
+    modalBody.scrollTop = 0;
+  }
+
+  function openModal(imgSrc, title) {
+    modalImg.src = imgSrc;
+    modalImg.alt = title;
+    modalTitle.textContent = title;
+    scale = 1;
+    baseWidth = 0;
+    baseHeight = 0;
+    /* clear previous layout so old image dimensions don't flash */
+    imgWrap.style.cssText = "";
+    modalImg.style.cssText = "";
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    closeBtn.focus();
+
+    function init() {
+      computeBase();
+      applyZoom();
+      modalBody.scrollLeft = 0;
+      modalBody.scrollTop = 0;
+    }
+    /* onload fires for new images; complete+naturalWidth for cached ones */
+    if (modalImg.complete && modalImg.naturalWidth) {
+      init();
+    } else {
+      modalImg.onload = init;
+      modalImg.onerror = init; /* fallback so modal isn't broken on error */
+    }
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    modalImg.onload = null;
+    modalImg.src = "";
+    scale = 1;
+    baseWidth = 0;
+    baseHeight = 0;
+  }
+
+  /* Scroll-wheel zoom */
+  modalBody.addEventListener(
+    "wheel",
+    function (e) {
+      if (!modal.classList.contains("is-open")) return;
+      e.preventDefault();
+      if (e.deltaY < 0) zoomIn();
+      else zoomOut();
+    },
+    { passive: false },
+  );
+
+  /* Drag-to-pan when zoomed in */
+  var isDragging = false,
+    startX = 0,
+    startY = 0,
+    scrollLeft = 0,
+    scrollTop = 0;
+
+  modalBody.addEventListener("mousedown", function (e) {
+    if (scale <= 1) return;
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    scrollLeft = modalBody.scrollLeft;
+    scrollTop = modalBody.scrollTop;
+    modalBody.classList.add("is-dragging");
+    e.preventDefault();
+  });
+
+  window.addEventListener("mouseup", function () {
+    if (isDragging) {
+      isDragging = false;
+      modalBody.classList.remove("is-dragging");
+    }
+  });
+
+  window.addEventListener("mousemove", function (e) {
+    if (!isDragging) return;
+    e.preventDefault();
+    modalBody.scrollLeft = scrollLeft - (e.clientX - startX);
+    modalBody.scrollTop = scrollTop - (e.clientY - startY);
+  });
+
+  /* Zoom button clicks */
+  zoomInBtn.addEventListener("click", zoomIn);
+  zoomOutBtn.addEventListener("click", zoomOut);
+  zoomResetBtn.addEventListener("click", resetZoom);
+
+  /* Card click */
+  document.addEventListener("click", function (e) {
+    var card = e.target.closest(".cert-card--clickable");
+    if (card) openModal(card.dataset.certImg, card.dataset.certTitle);
+  });
+
+  /* Keyboard */
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      var card = e.target.closest(".cert-card--clickable");
+      if (card) {
+        e.preventDefault();
+        openModal(card.dataset.certImg, card.dataset.certTitle);
+      }
+    }
+    if (modal.classList.contains("is-open")) {
+      if (e.key === "Escape") closeModal();
+      if (e.key === "+" || e.key === "=") zoomIn();
+      if (e.key === "-") zoomOut();
+      if (e.key === "0") resetZoom();
+    }
+  });
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (backdrop) backdrop.addEventListener("click", closeModal);
+})();
