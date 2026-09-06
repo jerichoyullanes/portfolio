@@ -13,6 +13,9 @@ function updateThemeIcon(theme) {
   var icon = document.getElementById("themeIcon");
   if (!icon) return;
   icon.className = theme === "dark" ? "fa-solid fa-moon" : "fa-solid fa-sun";
+  var toggle = document.getElementById("themeToggle");
+  if (toggle)
+    toggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
 }
 
 function toggleTheme() {
@@ -25,7 +28,10 @@ function toggleTheme() {
 
 document.addEventListener("DOMContentLoaded", function () {
   var toggle = document.getElementById("themeToggle");
-  if (toggle) toggle.addEventListener("click", toggleTheme);
+  if (toggle) {
+    toggle.addEventListener("click", toggleTheme);
+    updateThemeIcon(document.documentElement.getAttribute("data-theme"));
+  }
 
   // Listen for OS theme changes (only if user hasn't manually set preference)
   window
@@ -73,6 +79,8 @@ function toggleMobileNav() {
 
   mobileNav.classList.toggle("open");
   mobileToggle.classList.toggle("active");
+  mobileToggle.setAttribute("aria-expanded", String(!isOpen));
+  mobileNav.toggleAttribute("inert", isOpen);
   document.body.style.overflow = isOpen ? "" : "hidden";
 }
 
@@ -81,6 +89,8 @@ function closeMobileNav() {
   var mobileToggle = document.getElementById("mobileToggle");
   mobileNav.classList.remove("open");
   mobileToggle.classList.remove("active");
+  mobileToggle.setAttribute("aria-expanded", "false");
+  mobileNav.setAttribute("inert", "");
   document.body.style.overflow = "";
 }
 
@@ -211,6 +221,8 @@ function handleSubmit(event) {
 function showToast(message, type) {
   var toast = document.createElement("div");
   toast.className = "toast toast-" + type;
+  toast.setAttribute("role", type === "error" ? "alert" : "status");
+  toast.setAttribute("aria-live", type === "error" ? "assertive" : "polite");
 
   var iconClass =
     type === "success" ? "fa-check-circle" : "fa-exclamation-circle";
@@ -275,6 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var scale = 1;
   var baseWidth = 0;
   var baseHeight = 0;
+  var lastFocusedElement = null;
 
   /* Compute the 100%-zoom pixel dimensions that fit the container */
   function computeBase() {
@@ -338,6 +351,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function openModal(imgSrc, title) {
+    lastFocusedElement = document.activeElement;
     modalImg.src = imgSrc;
     modalImg.alt = title;
     modalTitle.textContent = title;
@@ -348,7 +362,7 @@ document.addEventListener("DOMContentLoaded", function () {
     imgWrap.style.cssText = "";
     modalImg.style.cssText = "";
     modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
+    modal.hidden = false;
     document.body.style.overflow = "hidden";
     closeBtn.focus();
 
@@ -369,13 +383,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function closeModal() {
     modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
+    modal.hidden = true;
     document.body.style.overflow = "";
     modalImg.onload = null;
     modalImg.src = "";
     scale = 1;
     baseWidth = 0;
     baseHeight = 0;
+    if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+      lastFocusedElement.focus();
+    }
+  }
+
+  function trapFocus(e) {
+    if (e.key !== "Tab") return;
+    var focusable = modal.querySelectorAll(
+      'button:not([disabled]), [tabindex="0"]',
+    );
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   }
 
   /* Scroll-wheel zoom */
@@ -443,6 +477,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     if (modal.classList.contains("is-open")) {
+      trapFocus(e);
       if (e.key === "Escape") closeModal();
       if (e.key === "+" || e.key === "=") zoomIn();
       if (e.key === "-") zoomOut();

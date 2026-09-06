@@ -9,7 +9,7 @@
   --border-hover: #3f3f46;
   --text: #fafafa;
   --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  --text-muted: #a1a1aa;
   --accent: #ef4444;
   --accent-dim: rgba(239, 68, 68, 0.1);
   --accent-hover: #dc2626;
@@ -22,7 +22,7 @@
   --code-bool: #fbbf24;
   --code-key: #93c5fd;
   --tag-bg: rgba(239, 68, 68, 0.1);
-  --tag-text: #ef4444;
+  --tag-text: #f87171;
   --card-bg: #141416;
   --card-border: #27272a;
   --success: #22c55e;
@@ -44,7 +44,7 @@
   --border-hover: #d4d4d8;
   --text: #09090b;
   --text-secondary: #52525b;
-  --text-muted: #a1a1aa;
+  --text-muted: #52525b;
   --accent: #dc2626;
   --accent-dim: rgba(220, 38, 38, 0.08);
   --accent-hover: #b91c1c;
@@ -57,7 +57,7 @@
   --code-bool: #d97706;
   --code-key: #2563eb;
   --tag-bg: rgba(220, 38, 38, 0.08);
-  --tag-text: #dc2626;
+  --tag-text: #b91c1c;
   --card-bg: #ffffff;
   --card-border: #e4e4e7;
   --success: #16a34a;
@@ -565,12 +565,25 @@ header.scrolled {
   color: #22c55e;
 }
 
+[data-theme="light"] .hero-status {
+  color: #15803d;
+}
+
+[data-theme="light"] .status-dot {
+  background: #15803d;
+}
+
 .status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #22c55e;
   animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.status-dot,
+.code-dot {
+  flex-shrink: 0;
 }
 
 @keyframes pulse-dot {
